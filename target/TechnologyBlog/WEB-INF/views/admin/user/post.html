@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>TopDev Blogs | Blog IT dành cho Developers</title>
+    <th:block th:replace="admin/user/layout::link">
+    </th:block>
+</head>
+<body>
+<div th:replace="admin/user/layout::preloader"></div>
+<div th:replace="admin/user/layout::navbar"></div>
+<article th:each="postContents : ${postContents}">
+    <h2 class="title" th:text="${postContents.title}">Post Title</h2>
+    <p class="content" th:utext="${postContents.content}">Post content</p>
+</article>
+<footer th:replace="admin/user/layout::views-footer"></footer>
+<th:block th:replace="admin/user/layout::Javascript">
+</th:block>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/admin/layout::header">
+</head>
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col" th:replace="/admin/layout::app-navbar" ></div>
+        <!-- top navigation -->
+        <div class="top_nav" th:replace="/admin/layout::app-header" ></div>
+
+
+        <div class="right_col" role="main">
+
+            <div class="page-title">
+<!--                                <div class="title_left">-->
+<!--                                    <h3 th:text="${term}"><span th:text="${session.username}"></span></h3>-->
+<!--                                </div>-->
+                <div class="title_right">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="float-right"> <a th:href="@{/admin/blog/add}" class="btn btn-primary" th:text="${title}"></a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-hover overflow-auto">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <!--<th>Content</th>-->
+                            <th>Image</th>
+                            <th colspan="2">Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <th:block th:each="postContents,iter : ${postContents}">
+                            <tr>
+                                <th th:text="${iter.index+1}"></th>
+                                <td th:text="${postContents.title}"></td>
+                                <td th:text="${postContents.description}"></td>
+                                <!--                                <td th:utext="${postContents.content}"></td>-->
+                                <td>
+                                    <th:block th:if="${postContents.image}">
+                                        <img th:src="@{/upload/__${postContents.image}__}" height="120px">
+                                    </th:block>
+                                </td>
+                                <td><a th:href="@{/admin/blog/edit/__${postContents.id}__ }">Edit</a></td>
+                                <td><a th:href="@{/admin/blog/delete/__${postContents.id}__ }">Delete</a></td>
+                            </tr>
+                        </th:block>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer th:replace="/admin/layout::app-footer" >
+
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+<th:block th:replace="/admin/layout::block-script" >
+</th:block>
+</body>
+</html>

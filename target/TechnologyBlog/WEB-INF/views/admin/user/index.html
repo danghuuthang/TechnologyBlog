@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>TopDev Blogs | Blog IT dành cho Developers</title>
+    <th:block th:replace="/admin/user/layout::link">
+    </th:block>
+</head>
+<style>
+    background: url{[[@{/img/Background.jpg}]]}
+
+</style>
+<body>
+<div th:replace="user/layout::preloader"></div>
+<div th:replace="user/layout::navbar"></div>
+<section class="hero--area section-padding-80">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-12 col-md-7 col-lg-8">
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="post-1" role="tabpanel" aria-labelledby="post-1-tab">
+                        <!-- new post Post -->
+                        <div class="single-feature-post video-post bg-img">
+                            <img th:src="@{/upload/__${postHeader.image}__}">
+                            <!-- Play Button -->
+                            <a href="video-post.html" class="btn play-btn"><i class="fa fa-play" aria-hidden="true"></i></a>
+
+                            <!-- Post Content -->
+                            <div class="post-content">
+                                <a href="#" class="post-cata">Sports</a>
+                                <a href="single-post.html" class="post-title" th:text="${postHeader.title}"></a>
+                                <div class="post-meta d-flex">
+                                    <a href="#"><i class="fa fa-comments-o" aria-hidden="true"></i> 25</a>
+                                    <a href="#"><i class="fa fa-eye" aria-hidden="true"></i> 25</a>
+                                    <a href="#"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 25</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-5 col-lg-4">
+                <ul class="nav vizew-nav-tab" role="tablist">
+                    <th:block th:each="postHome,iter : ${postHome}">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="post-1-tab" data-toggle="pill" href="#post-1" role="tab" aria-controls="post-1" aria-selected="true">
+                                <!-- Single Blog Post -->
+                                <div class="single-blog-post style-2 d-flex align-items-center">
+                                    <div class="post-thumbnail">
+                                        <img th:src="@{/upload/__${postHome.image}__}" alt="">
+                                    </div>
+                                    <div class="post-content">
+                                        <h6 class="post-title" th:text="${postHome.title}"></h6>
+                                        <div class="post-meta d-flex justify-content-between">
+                                            <span><i class="fa fa-comments-o" aria-hidden="true"></i> 25</span>
+                                            <span><i class="fa fa-eye" aria-hidden="true"></i> 11</span>
+                                            <span><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 19</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                    </th:block>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+<footer th:replace="user/layout::views-footer"></footer>
+<th:block th:replace="user/layout::Javascript">
+</th:block>
+</body>
+</html>
